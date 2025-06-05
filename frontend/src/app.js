@@ -41,7 +41,7 @@ function App() {
   };
 
   const translateText = async (text) => {
-    const res = await axios.post('http://localhost:5000/translate', {
+    const res = await axios.post('https://speech-translate-app.onrender.com/translate', {
       text,
       target: outputLang
     });
