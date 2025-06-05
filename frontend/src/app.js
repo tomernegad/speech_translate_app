@@ -1,3 +1,4 @@
+import './App.css';
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
 
@@ -63,29 +64,29 @@ function App() {
   };
 
   return (
-    <div style={{ maxWidth: 500, margin: 'auto', padding: 20 }}>
-      <h2>Real-Time Speech Translator</h2>
-      <div>
-        <label>From: </label>
-        <select value={inputLang} onChange={e => setInputLang(e.target.value)}>
-          {languages.map(l => <option key={l.code} value={l.code}>{l.label}</option>)}
-        </select>
-        <button onClick={swapLanguages}>⇄</button>
-        <label>To: </label>
-        <select value={outputLang} onChange={e => setOutputLang(e.target.value)}>
-          {languages.map(l => <option key={l.code} value={l.code}>{l.label}</option>)}
-        </select>
-      </div>
-      <button onClick={startListening} style={{ marginTop: 20 }}>🎤 Speak</button>
-      <div style={{ marginTop: 20 }}>
-        <strong>Transcript:</strong>
-        <div>{transcript}</div>
-      </div>
-      <div style={{ marginTop: 20 }}>
-        <strong>Translation:</strong>
-        <div>{translation}</div>
-      </div>
-    </div>
+    <div className="translator-card">
+  <h2 style={{textAlign: 'center', color: '#2563eb', marginBottom: 24}}>Real-Time Speech Translator</h2>
+  <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16}}>
+    <label>From: </label>
+    <select className="translator-select" value={inputLang} onChange={e => setInputLang(e.target.value)}>
+      {languages.map(l => <option key={l.code} value={l.code}>{l.label}</option>)}
+    </select>
+    <button onClick={swapLanguages} className="translator-btn" style={{width: 40, padding: 0, margin: '0 8px'}}>⇄</button>
+    <label>To: </label>
+    <select className="translator-select" value={outputLang} onChange={e => setOutputLang(e.target.value)}>
+      {languages.map(l => <option key={l.code} value={l.code}>{l.label}</option>)}
+    </select>
+  </div>
+  <button onClick={startListening} className="translator-btn">🎤 Speak</button>
+  <div style={{ marginTop: 24 }}>
+    <strong>Transcript:</strong>
+    <div className="translator-transcript">{transcript}</div>
+  </div>
+  <div style={{ marginTop: 16 }}>
+    <strong>Translation:</strong>
+    <div className="translator-translation">{translation}</div>
+  </div>
+</div>
   );
 }
 
