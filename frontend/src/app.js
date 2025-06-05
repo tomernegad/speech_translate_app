@@ -15,6 +15,7 @@ function App() {
 
   const startListening = () => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    console.log('SpeechRecognition:', SpeechRecognition); // Debug: check if supported
     if (!SpeechRecognition) {
       alert('Speech Recognition not supported');
       return;
@@ -22,8 +23,15 @@ function App() {
     const recognition = new SpeechRecognition();
     recognition.lang = inputLang === 'en' ? 'en-US' : 'he-IL';
     recognition.interimResults = false;
+    recognition.onstart = () => {
+      console.log('Speech recognition started');
+    };
+    recognition.onerror = (event) => {
+      console.error('Speech recognition error:', event.error);
+    };
     recognition.onresult = (event) => {
       const text = event.results[0][0].transcript;
+      console.log('Transcript:', text); // Debug: see what was recognized
       setTranscript(text);
       translateText(text);
     };
