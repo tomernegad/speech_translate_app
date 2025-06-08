@@ -11,7 +11,7 @@ app.post('/translate', async (req, res) => {
     const source = target === 'en' ? 'he' : 'en';
     try {
         const response = await axios.post(
-            'https://libretranslate-xzrr.onrender.com/translate',
+            'http://localhost:5001/translate',
             {
                 q: text,
                 source: source,
