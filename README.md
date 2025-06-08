@@ -1,21 +1,62 @@
-# Speech Translate App
+# Speech Translate App (Local Version)
 
-A web app for real-time speech-to-text and translation between English and Hebrew.
+A simple React + Express app for real-time speech-to-text and translation between English and Hebrew, running **entirely on your local machine**.
 
-![Screenshot App](https://github.com/user-attachments/assets/6caf76c6-4143-4e4a-8c8e-616a398f6aca)
-
-
-## 🌐 Live Website
-
-[https://speech-translate-app-1.onrender.com/](https://speech-translate-app-1.onrender.com/)
+![Screenshot App](https://github.com/user-attachments/assets/788dc725-ce77-4250-b5e7-65afeaf85389)
 
 ---
 
 ## Features
 
 - 🎤 Speak in English or Hebrew and get instant transcription.
-- 🌐 Translates your speech between English and Hebrew.
-- 🚀 No installation needed—just open the site and use!
+- 🌐 Translates your speech between English and Hebrew using LibreTranslate.
+- 🖥️ Runs locally—no cloud deployment needed.
+
+---
+
+## Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/speech_translate_app.git
+cd speech_translate_app
+```
+
+### 2. Start LibreTranslate Locally
+
+Make sure you have [Docker](https://www.docker.com/) installed, then run:
+
+```bash
+docker run -p 5001:5000 -e LT_LOAD_ONLY="en,he" libretranslate/libretranslate
+```
+
+### 3. Start the Backend
+
+```bash
+cd backend
+npm install
+npm start
+```
+- Runs at [http://localhost:5000](http://localhost:5000)
+
+### 4. Start the Frontend
+
+```bash
+cd ../frontend
+npm install
+npm start
+```
+- Runs at [http://localhost:3000](http://localhost:3000)
+
+---
+
+## Usage
+
+1. Open [http://localhost:3000](http://localhost:3000) in your browser.
+2. Select input and output languages.
+3. Click "🎤 Speak" and start talking.
+4. See your transcript and translation instantly.
 
 ---
 
@@ -23,7 +64,7 @@ A web app for real-time speech-to-text and translation between English and Hebre
 
 - **Frontend:** React
 - **Backend:** Express.js
-- **Translation:** LibreTranslate
+- **Translation:** LibreTranslate (Docker)
 
 ---
 
